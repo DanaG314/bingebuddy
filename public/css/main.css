@@ -35,16 +35,70 @@ nav a {
   }
 }
 
+h1 {
+  grid-column-end: span 2;
+  text-align: center;
+}
+
+#hp-h1 {
+  grid-template-columns: 1;
+  grid-row-start: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#hp-section {
+  grid-template-columns: 1;
+  grid-row-start: 3;
+  text-align: left;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+#hp-section h2 {
+  text-align: center;
+}
+
+#hp-section p {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#sign-in {
+  grid-template-columns: 2;
+  grid-row-end: 4;
+  justify-self: flex-end;
+}
+
+/* #sign-up-section form {
+  margin-top: 30px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+} */
+
 nav span {
   font-size: 1.5vmin;
   color: lightslategray;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5vmin;
+  display: grid; /* previously flex */
+  grid-template-columns: 600px 600px;
+  grid-template-rows: 100px 100px 300px 100px;
+  justify-self: center;
 }
 
 form {

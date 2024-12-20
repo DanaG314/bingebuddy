@@ -1,3 +1,27 @@
 <%- include('./partials/header.ejs') %>
-<!-- Home Page's Content -->
+<% if (!user) { %>
+ <div id="hp-h1">
+      <h1>Welcome to BingeBuddy</h1>
+    </div>
+      <section id="hp-section">
+      <p>Join BingeBuddy to recommend your favorite movies, shows, and series!</p>
+      <p>Explore recommendations from a community of fellow binge-watchers.</p>
+      <h2>Sign up now and start building your watchlist!</h2>
+    </section>
+      <div id="sign-in">
+        <h2>Already have an account? Sign In below:</h2>
+        <form action="/auth/sign-in" method="POST" id="sign-in-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required />
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+          
+          <button type="submit">Sign In</button>
+        </form>
+        <br/>
+      </div>
+      <% } else { %>
+        <h1>Welcome back <%= user.username %>!</h1>
+      <% } %>
 <%- include('./partials/footer.ejs') %>
