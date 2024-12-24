@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>My Movie Recommendations</h1>
+
+<% if (recommendations && recommendations.length > 0) { %>
+<ul>
+    <% recommendations.forEach(reco => { %>
+        <li>
+            <a href="/:recommendation/movies/:movieId"></a>
+        </li>
+    <% }) %>
+</ul>
+<% } else { %>
+    <p>You have not created movie recommendations yet!</p>
+<% } %>
+
+<a href=":recommendationId/movies/:movieId/new">Add New Movie Recommendation</a>
+
+<%- include('../partials/footer.ejs') %>
