@@ -14,7 +14,7 @@
         <!-- Above renders whether signed in or not -->
         <% if (user) { %>
           <a href="/unicorns">ALL RECOMMENDATIONS</a>
-        <a href="/unicorns/new">ADD RECOMMENDATION</a>
+        <a href="/users/<%= user._id%>/recommendations">MY RECOMMENDATION</a>
         <a href="/auth/sign-out">SIGN OUT</a>
         <span><%= user.username %></span>
         <% } else { %>

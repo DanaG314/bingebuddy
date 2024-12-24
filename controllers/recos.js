@@ -8,8 +8,15 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 // All routes start with '/unicorns'
 
 // GET /recommendations (index functionality) UN-PROTECTED - all users can access
-router.get('/', (req, res) => {
-  res.render('home.ejs');
+router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) => {
+  console.log('Route hit: /users/:userId/recommendations/movies');
+  try {
+    const recommendations = req.user.recommendations;
+    res.render('users/show.ejs', { recommendations, title: 'My Recommendations' });
+  } catch (e) {
+    console.log(e);
+    res.redirect('/');
+  }
 });
 
 

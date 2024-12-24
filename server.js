@@ -51,8 +51,8 @@ app.get('/', (req, res) => {
 // The "starts with" path is pre-pended to the paths
 // defined in the router module
 app.use('/auth', require('./controllers/auth'));
-
-app.use('/recommendations', require('./controllers/recos'));
+app.use('/', require('./controllers/recos'));
+app.use('/users', require('./controllers/users'));
 app.use('/movies', require('./controllers/movies'));
 
 // Any requests that get this far must have a signed in 

@@ -1,17 +1,17 @@
 <%- include('./partials/header.ejs') %>
 <% if (!user) { %>
+  <div id="landing-container">
   <div id="welcome-container">
- <div id="hp-h1">
-      <h1>Welcome to BingeBuddy</h1>
- </div>
-      <section id="hp-section">
+
+    
+    <section id="hp-section">
+        <h1>Welcome to BingeBuddy</h1>
       <p>Join BingeBuddy to recommend your favorite movies, shows, and series!</p>
       <p>Explore recommendations from a community of fellow binge-watchers.</p>
       <h2>Sign up now and start building your watchlist!</h2>
     </section>
     </div>
-    <div id="sign-in-container">
-      <div id="sign-in">
+      <div id="sign-in-container">
         <h2>Already have an account? Sign In below:</h2>
         <form action="/auth/sign-in" method="POST" id="sign-in-form">
           <label for="username">Username:</label>
@@ -23,24 +23,11 @@
           <button type="submit">Sign In</button>
         </form>
         <br/>
-        </div>
-        </div>
       </div>
+    </div>
       <% } else { %>
-        <h1>Welcome back <%= user.username %>!</h1>
-        <div id="container">
-        <section class="container">
-        <div class="image"></div>
-        <a href="/movies" class="movies">My Movies</a>
-        </section>
-        <section class="container">
-        <div class="image"></div>
-        <a href="/shows" class="shows">My Shows</a>
-        </section>
-        <section class="container">
-        <div class="image"></div>
-        <a href="/shows" class="shows">My Shows</a>
-        </section>
-      </div>
+        <h1>Welcome back to BingeBuddy <%= user.name %>!</h1>
+  
+
       <% } %>
 <%- include('./partials/footer.ejs') %>

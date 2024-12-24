@@ -93,10 +93,10 @@ div.image {
   align-content: center;
 }
 
-#sign-in {
-  grid-template-columns: 2;
-  grid-row-end: 4;
-  justify-self: flex-end;
+#landing-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 /* #sign-up-section form {
@@ -116,9 +116,9 @@ nav span {
 }
 
 main {
-  display: grid; /* previously flex */
+  display: inline-flex; /* previously flex */
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   /* grid-template-columns: 600px 600px;
   grid-template-rows: 100px 100px 300px 100px;
@@ -152,6 +152,13 @@ a.movies {
 #container {
   display: inline;
   flex-direction: row;
+  border: 15px solid pink;
+}
+
+#welcome-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .image {
@@ -187,3 +194,4 @@ button:hover {
   background-color: lightslategray;
   color: white;
 }
+
