@@ -2,11 +2,15 @@
 
 <h1>My Movie Recommendations</h1>
 
-<% if (recommendations && recommendations.length > 0) { %>
-<ul>
-    <% recommendations.forEach(reco => { %>
+<% if (movies && movies.length > 0) { %>
+<ul id="movie-listing">
+    <% movies.forEach(movie => { %>
         <li>
-            <a href="/:recommendation/movies/:movieId"></a>
+            <img src="<%= movie.movie?.imageUrl %>" alt="<%= movie.movie?.title %>" />
+            <a href="/movies/<%= movie._id %>"><h2><%= movie.movie?.title %></h2></a>
+            <p>Genre: <%= movie.movie?.genre %></p>
+            <p>Rating: <%= movie.movie?.rating %></p>
+
         </li>
     <% }) %>
 </ul>

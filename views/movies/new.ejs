@@ -10,16 +10,22 @@
     <input type="text" name="genre" id="genre" required>
 
     <label for="year">Release Year:</label>
-    <input type="number" name="year" required>
+    <input type="number" name="year" id="year" required>
 
     <label for="rating">Rating (0-10):</label>
-    <input type="number" name="rating" min="0" max="10" step="0.1" required>
+    <input type="number" name="rating" id="rating" min="0" max="10" step="0.1" required>
 
     <label for="imageUrl">Movie Image URL:</label>
     <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg">
+    <!-- <select name="contentType" id="contentType">
+        <% contentTypes.forEach(contentType => { %>
+            <option value="<%= contentType %>"><%= contentType %></option>
+        <% }) %>
+    </select> -->
+    <input type="hidden" value="movie" name="contentType" />
 
     <label for="note">Notes:</label>
-    <textarea type="text" name="note"></textarea>
+    <textarea type="text" name="note" id="note"></textarea>
 
     <button type="submit">Add Movie Reccomendation</button>
 </form>

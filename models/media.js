@@ -22,6 +22,10 @@ const movieSchema = new Schema ({
         type: String,
         required: false
     },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }
 }, {
     timestamps: true
 });
@@ -46,6 +50,10 @@ const showSchema = new Schema ({
     year: {
         type: Date,
         required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     }
 }, {
     timestamps: true
@@ -71,15 +79,23 @@ const seriesSchema = new Schema ({
         type: Schema.Types.ObjectId, 
         ref: 'Movie'
     }],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }
 }, {
     timestamps: true
 });
 
 const mediaSchema = new Schema ({
-    type: {
+    contentType: {
         type: String,
         enum: ['movie', 'show', 'series'],
         required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     },
     movie: movieSchema,
     show: showSchema,
