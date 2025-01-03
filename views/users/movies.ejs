@@ -1,0 +1,25 @@
+<%- include('../partials/navbar.ejs', { active: '' }) %>
+<div style="display: flex; justify-content: center; padding: 40px;">
+<h1>My Movie Recommendations</h1>
+</div>
+<div class="row">
+    <div class="col">
+        <% if (movieRecommendations && movieRecommendations.length > 0) { %>
+        <ul id="movie-listing">
+            <% movieRecommendations.forEach(reco => { %>
+                <li>
+                    <img src="<%= reco.media.movie?.imageUrl %>" alt="<%= reco.media.movie?.title %>" />
+                    <a href="/users/<%= user._id %>/recommendations/movies/<%= reco.media._id %>"><h2><%= reco.media.movie?.title %></h2></a>
+                </li>
+            <% }) %>
+        </ul>
+        <% } else { %>
+            <p>You have not created movie recommendations yet!</p>
+        <% } %>
+        
+        
+    </div>
+</div>
+<a href="<%= newLink %>" style="display: flex; justify-content: center; margin-top: 20px;">Add New Movie Recommendation</a>
+
+<%- include('../partials/footer.ejs') %>

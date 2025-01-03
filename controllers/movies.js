@@ -24,10 +24,12 @@ router.get('/new', ensureSignedIn, async (req, res) => {
     res.render('movies/new.ejs', { title: 'Add Movie Recommendation', recommendations, contentTypes });
 });
 
-// router.get('/:movieId', ensureSignedIn, async (req, res) => {
-//     const movie = await Media.findById(req.params.id).populate('movie');
-//     res.render('movies/show.ejs');
-// });
+router.get('/:movieId', ensureSignedIn, async (req, res) => {
+    const media = await Media.findById(req.params.movieId).populate('movie')
+
+    res.render('movies/show.ejs', { movie: media.movie });
+});
+
 
 router.post('/new', ensureSignedIn, async (req, res) => {
     try {        

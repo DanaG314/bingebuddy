@@ -1,0 +1,47 @@
+<%- include('../../partials/navbar.ejs', { active: '' }) %>
+<div class="card">
+    <div class="card-header">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0" style="display: inline-flex;">
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="/users/<%= user?._id %>/recommendations/shows">Back to Movies</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <%= show.title %>
+                </li>
+            </ol>
+            <div style="display: inline-flex; float: right;">
+                <a class="btn btn-primary" href="/users/<%= user?._id %>/recommendations/shows/<%= media._id %>/edit">Edit</a>
+                <form action="/users/<%= user._id %>/recommendations/<%= recommendation._id %>?_method=DELETE" method="POST" id="main">
+                    <button class="btn btn-danger" type="submit">DELETE</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3" align="center">
+                <div style="margin: 0 auto;">
+                    <img id="show-image" src="<%= show?.imageUrl %>" alt="imageUrl">
+                </div>
+                
+            </div>
+            <div class="col-lg-9" style="max-height: 400px;">
+                <h1><%= show.title %></h1>
+                <div id="details-container">
+                    <h4>Genre: <%= show.genre %></h4>
+                    <h4>Release Year: <%= show.year %></h4>
+                    <h4>Rating: <%= show.rating %> </h4>
+                    <h4>Seasons: <%= show.seasons %></h4>
+                    <h4>Episodes: <%= show.episodes %></h4>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p id="description"><strong>Description:</strong> <%= show.description %></p>
+        </div>
+        <p>Notes: <%= recommendation.note %></p>
+    </div>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

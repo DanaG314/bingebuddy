@@ -1,17 +1,23 @@
-<%- include('../partials/header.ejs') %>
-<h1>My Recommendations</h1>
-<div id="container">
-    <section class="container">
-    <div class="image"></div>
-    <a href="/movies" class="movies">My Movies</a>
-    </section>
-    <section class="container">
-    <div class="image"></div>
-    <a href="/shows" class="shows">My Shows</a>
-    </section>
-    <section class="container">
-    <div class="image"></div>
-    <a href="/shows" class="shows">My Shows</a>
-    </section>
+<%- include('../partials/navbar.ejs', { active: 'recommendations' }) %>
+<div style="margin-top: 5rem;">
+  <h1 class="text-center">My Recommendations</h1>
+</div>
+<div style="margin-top: 5rem;">
+  <div class="row">
+    <div class="col-lg" align="center">
+      <div class="image"></div>
+      <a href="<%= moviesLink %>" class="movies">My Movies</a>
+    </div>
+    <div class="col-lg" align="center">
+      <div class="image"></div>
+      <a href="/users/<%= user._id %>/recommendations/shows" class="shows">My Shows</a>
+    </div>
+    <div class="col-lg" align="center">
+      <div class="image"></div>
+      <a href="/shows" class="shows">My Shows</a>
+    </div>
   </div>
+</div>
+
+
   <%- include('../partials/footer.ejs') %>

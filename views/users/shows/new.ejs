@@ -1,0 +1,62 @@
+<%- include('../../partials/navbar.ejs', { active: '' }) %>
+
+<div class="card mb-4" style="width: 100%;">
+    <div class="card-body">
+        <form id="new-show-reco" action="<%= actionLink %>" method="POST">
+            <div>
+                <label for="mediaId" class="form-label">Show</label>
+            </div>
+            
+            <div class="newShowSection">
+                <div>
+                    <label for="title" class="form-label">Show Title:</label>
+                    <input type="text" name="title" id="title" class="form-control"/>
+                </div>
+                
+                <div>
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea name="description" id="description" class="form-control" rows="3" cols="10"></textarea>
+                </div>
+
+                <div>
+                    <label for="note" class="form-label">Notes:</label>
+                    <textarea name="note" id="note" class="form-control" rows="3" cols="10"></textarea>
+                </div>
+                
+                <div>
+                    <label for="seasons" class="form-label">Seasons:</label>
+                    <input type="number" name="seasons" id="seasons" class="form-control" />
+                </div>
+                
+                <div>
+                    <label for="episodes" class="form-label">Episodes:</label>
+                    <input type="number" name="episodes" id="episodes" class="form-control" />
+                </div>
+                
+                <div>
+                    <label for="genre" class="form-label">Genre:</label>
+                    <input type="text" name="genre" id="genre" class="form-control" />
+                </div>
+                <div>
+                    <label for="year" class="form-label">Release Year:</label>
+                    <input type="number" name="year" id="year" class="form-control" />
+                </div>
+                <div>
+                    <label for="rating" class="form-label">Rating (0-10):</label>
+                    <input type="number" name="rating" id="rating" min="0" max="10" step="0.1" class="form-control" />
+                </div>
+
+                <div>
+                    <label for="imageUrl" class="form-label">Show Image URL:</label>
+                    <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="form-control" />
+                </div>
+            </div>    
+         
+            <input type="hidden" value="show" name="contentType" />
+        
+            <button type="submit">Save Recommendation</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

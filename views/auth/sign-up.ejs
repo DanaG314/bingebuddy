@@ -1,6 +1,26 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs', { active: 'signup' }) %>
 
 <form action="/auth/sign-up" method="POST">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" class="form-control" id="name" aria-describedby="name">
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username:</label>
+    <input type="username" class="form-control" id="username">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label">Confirm Password:</label>
+    <input type="password" class="form-control" id="confirmPassword">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- <form action="/auth/sign-up" method="POST">
   <label for="name">Name:</label>
   <input type="text" name="name" id="name">
   <label for="username">Username:</label>
@@ -10,6 +30,6 @@
   <label for="confirmPassword">Confirm Password:</label>
   <input type="password" name="confirmPassword" id="confirmPassword" />
   <button type="submit">SIGN UP</button>
-</form>
+</form> -->
 
 <%- include('../partials/footer.ejs')%>

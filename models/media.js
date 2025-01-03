@@ -11,11 +11,15 @@ const movieSchema = new Schema ({
         required: true
     },
     year: {
-        type: Date,
+        type: Number,
         required: true
     },
     rating: {
         type: Number,
+        required: true
+    },
+    description: {
+        type: String,
         required: true
     },
     imageUrl: {
@@ -35,6 +39,14 @@ const showSchema = new Schema ({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
+    note: {
+        type: String,
+        required: false
+    },
     seasons: {
         type: Number,
         required: true
@@ -48,8 +60,16 @@ const showSchema = new Schema ({
         required: true
     },
     year: {
-        type: Date,
+        type: Number,
         required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    },
+    imageUrl: {
+        type: String,
+        required: false
     },
     owner: {
         type: Schema.Types.ObjectId,
