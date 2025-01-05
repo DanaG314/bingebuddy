@@ -21,6 +21,20 @@ mongoose.connection.on("connected", () => {
 
 // Mount Middleware
 // app.use(...)
+app.set('view engine', 'ejs');
+
+app.use((req, res, next) => {
+  res.renderWithLayout = (view, options = {}) => {
+    // Render the route-specific view first
+    res.render(view, options, (err, html) => {
+      if (err) return next(err); // Handle errors
+      // Inject the rendered HTML into the layout
+      options.body = html; // Pass the rendered content as 'body'
+      res.render('layout', options); // Render the layout with the injected body
+    });
+  };
+  next();
+});
 
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
@@ -44,7 +58,7 @@ app.use(require('./middleware/add-user-to-locals-and-req'));
 
 // GET /  (home page functionality)
 app.get('/', (req, res) => {
-  res.render('home.ejs', { title: 'Home Page' });
+  res.renderWithLayout('home.ejs', { title: 'Home Page' });
 });
 
 // '/auth' is the "starts with" path that the request must match
@@ -60,8 +74,6 @@ app.use('/movies', require('./controllers/movies'));
 app.use(require('./middleware/ensure-signed-in'));
 // Any controller/routes mounted below here will have
 // ALL routes protected by the ensureSignedIn middleware
-
-
 
 
 

@@ -8,7 +8,7 @@ const router = express.Router();
 
 // GET /auth/sign-up (see the sign-up form - new functionality for the users data resource)
 router.get('/sign-up', (req, res) => {
-  res.render('auth/sign-up.ejs', { title: 'Sign Up!' })
+  res.renderWithLayout('auth/sign-up.ejs', { title: 'Sign Up!' })
 });
 
 // GET /auth/sign-out
@@ -34,7 +34,7 @@ router.post('/sign-up', async (req, res) => {
 
 // GET /auth/sign-in (show the sign-in page)
 router.get('/sign-in', (req, res) => {
-  res.render('auth/sign-in.ejs', { title: 'Sign In' });
+  res.renderWithLayout('auth/sign-in.ejs', { title: 'Sign In' });
 });
 
 // POST /auth/sign-in (sign in a user)

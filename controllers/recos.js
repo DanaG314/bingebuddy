@@ -14,7 +14,7 @@ router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) =>
   try {
     const recommendations = req.user.recommendations;
     const moviesLink = `/users/${req.params.userId}/recommendations/movies`;
-    res.render('users/show.ejs', { recommendations, title: 'My Recommendations', moviesLink  });
+    res.renderWithLayout('users/show.ejs', { recommendations, title: 'My Recommendations', moviesLink  });
   } catch (e) {
     console.log(e);
     res.redirect('/');
@@ -27,7 +27,7 @@ router.get('/users/:userId/recommendations/movies', ensureSignedIn, async (req, 
   const newLink = `/users/${req.params.userId}/recommendations/movies/new`;
   const movieRecommendations = recommendations.filter((r) => r.media?.contentType == "movie");
   
-  res.render('users/movies.ejs',{ movieRecommendations, newLink });
+  res.renderWithLayout('users/movies.ejs',{ movieRecommendations, newLink });
 });
 
 router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, res) => {
@@ -35,33 +35,33 @@ router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, r
   const newLink = `/users/${req.params.userId}/recommendations/shows/new`;
   const showRecommendations = recommendations.filter((r) => r.media?.contentType == "show");
   
-  res.render('users/shows.ejs',{ showRecommendations, newLink });
+  res.renderWithLayout('users/shows.ejs',{ showRecommendations, newLink });
 });
 
 // GET request .. new functionality 
 router.get('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
   const movies = await Media.find({ contentType: 'movie' }).populate('movie');
   const actionLink = `/users/${req.params.userId}/recommendations/movies/new`;
-  res.render('users/movies/new.ejs', { movies, actionLink })
+  res.renderWithLayout('users/movies/new.ejs', { movies, actionLink })
 });
 
 router.get('/users/:userId/recommendations/shows/new', ensureSignedIn, async (req, res) => {
   const shows = await Media.find({ contentType: 'show' }).populate('show');
   const actionLink = `/users/${req.params.userId}/recommendations/shows/new`;
-  res.render('users/shows/new.ejs', { shows, actionLink })
+  res.renderWithLayout('users/shows/new.ejs', { shows, actionLink })
 });
 
 // GET request to /users/:userId/recommendations/movies/:mediaId  Show Functionality
 router.get('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, async (req, res) => {
   const media = await Media.findById(req.params.mediaId).populate('movie');
   const recommendation = await Reco.findOne({ owner: req.session.user, media: req.params.mediaId }).populate('media');
-  res.render('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
+  res.renderWithLayout('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
 });
 
 router.get('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
   const media = await Media.findById(req.params.mediaId).populate('show');
   const recommendation = await Reco.findOne({ owner: req.session.user, media: req.params.mediaId }).populate('media');
-  res.render('users/shows/show.ejs', { show: media?.show, media, recommendation });
+  res.renderWithLayout('users/shows/show.ejs', { show: media?.show, media, recommendation });
 });
 
 // GET request to /users/:userId/recommendations/movies/:mediaId/edit Edit functionality
@@ -70,7 +70,7 @@ router.get('/users/:userId/recommendations/movies/:mediaId/edit', ensureSignedIn
     const movies = await Media.find({ contentType: 'movie' }).populate('movie');
     const curMedia = await Media.findById(req.params.mediaId).populate('movie');
     const reco = await Reco.findOne({ owner: req.session.user, media: curMedia._id});
-    res.render('users/movies/edit.ejs', { curMedia, movies, reco });
+    res.renderWithLayout('users/movies/edit.ejs', { curMedia, movies, reco });
   } catch (e) {
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/movies`);
@@ -82,7 +82,7 @@ router.get('/users/:userId/recommendations/shows/:mediaId/edit', ensureSignedIn,
     const shows = await Media.find({ contentType: 'show' }).populate('show');
     const curMedia = await Media.findById(req.params.mediaId).populate('show');
     const reco = await Reco.findOne({ owner: req.session.user, media: curMedia._id});
-    res.render('users/shows/edit.ejs', { curMedia, shows, reco });
+    res.renderWithLayout('users/shows/edit.ejs', { curMedia, shows, reco });
   } catch (e) {
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/shows`);
@@ -125,7 +125,7 @@ router.post('/users/:userId/recommendations/movies/:recoId', ensureSignedIn, asy
     await media.save();
     await recommendation.save();
     
-    res.render('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
+    res.renderWithLayout('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
   } catch (e) {
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/movies`);
@@ -156,7 +156,7 @@ router.post('/users/:userId/recommendations/shows/:recoId', ensureSignedIn, asyn
     await recommendation.save();
     console.log("saved reco")
     
-    res.render('users/shows/show.ejs', { show: media?.show, media, recommendation });
+    res.renderWithLayout('users/shows/show.ejs', { show: media?.show, media, recommendation });
   } catch (e) {
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/shows`);

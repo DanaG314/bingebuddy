@@ -1,4 +1,3 @@
-<%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div class="card">
     <div class="card-body">
         <form action="/users/<%= user._id %>/recommendations/shows/<%= reco._id %>" method="POST">
@@ -60,6 +59,3 @@
     </div>
 </div>
 </div>
-
-
-<%- include('../../partials/footer.ejs') %>
