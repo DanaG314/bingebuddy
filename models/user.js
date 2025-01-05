@@ -2,7 +2,23 @@ const mongoose = require("mongoose");
 // Shortcut variable
 const Schema = mongoose.Schema;
 
-const recommendationSchema = require('../models/recommendation');
+const recommendationSchema = new Schema ({
+  owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+  },
+  media: {
+      type: Schema.Types.ObjectId,
+      ref: 'Media'
+  },
+  note: {
+    type: String
+  },
+}, {
+  timestamps: true,
+}
+);
+
 
 const userSchema = new Schema({
   name: {
@@ -18,10 +34,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  recommendations: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Recommendation'
-  }],
+  recommendations: [recommendationSchema],
 });
 
 module.exports = mongoose.model("User", userSchema);

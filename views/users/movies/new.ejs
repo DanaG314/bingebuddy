@@ -7,7 +7,7 @@
                 <select name="mediaId" id="mediaId" class="form-control">
                     <% movies.forEach(media => { %>
                         <option value="<%= media._id %>">
-                            <%= media?.movie.title %>
+                            <%= media.movie?.title %>
                         </option>
                     <% }) %>
                     <option value="newMovie">-- NEW MOVIE --</option>

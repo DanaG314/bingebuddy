@@ -12,7 +12,7 @@
             </ol>
             <div style="display: inline-flex; float: right;">
                 <a class="btn btn-primary" href="/users/<%= user?._id %>/recommendations/shows/<%= media._id %>/edit">Edit</a>
-                <form action="/users/<%= user._id %>/recommendations/<%= recommendation._id %>?_method=DELETE" method="POST" id="main">
+                <form action="/users/<%= user._id %>/recommendations/shows/<%= recommendation._id %>?_method=DELETE" method="POST" id="main">
                     <button class="btn btn-danger" type="submit">DELETE</button>
                 </form>
             </div>

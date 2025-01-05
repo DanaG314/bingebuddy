@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../models/user');
 const Media = require('../models/media');
-const Recommendation = require('../models/recommendation');
+// const Recommendation = require('../models/recommendation');
 const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 // GET /movies (index func) PROTECTED - only signed in users can access
