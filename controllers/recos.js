@@ -6,9 +6,7 @@ const Media = require('../models/media')
 const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 
-// All routes start with '/unicorns'
 
-// GET /recommendations (index functionality) UN-PROTECTED - all users can access
 router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) => {
   try {
     const recommendations = req.user.recommendations;
@@ -22,15 +20,16 @@ router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) =>
 
 // GET request to /users/:userId/recommendations/movies index functionality 
 router.get('/users/:userId/recommendations/movies', ensureSignedIn, async (req, res) => {
-  const user = await User.findById(req.params.userId);
+  const user = await User.findById(req.params.userId).populate('recommendations.media');
+  console.log("user: ", user);
   const newLink = `/users/${req.params.userId}/recommendations/movies/new`;
   const movieRecommendations = user.recommendations.filter((r) => r.media?.contentType == "movie");
-  
+  console.log("Movie Rec: ",movieRecommendations);
   res.render('users/movies.ejs',{ movieRecommendations, newLink });
 });
 
 router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, res) => {
-  const user = await User.findById(req.params.userId).populate('recommendations');
+  const user = await User.findById(req.params.userId).populate('recommendations.media');
   const newLink = `/users/${req.params.userId}/recommendations/shows/new`;
   const showRecommendations = user.recommendations.filter((r) => r.media?.contentType == "show");
   
@@ -40,6 +39,7 @@ router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, r
 // GET request .. new functionality 
 router.get('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
   const movies = await Media.find({ contentType: 'movie' }).populate('movie');
+  console.log('movies: ', movies);
   const actionLink = `/users/${req.params.userId}/recommendations/movies/new`;
   res.render('users/movies/new.ejs', { movies, actionLink })
 });
@@ -124,6 +124,58 @@ router.delete('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, a
   }
 });
 
+
+router.post('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const formData = req.body;
+    let media;
+    console.log("formdata.mediaid: ", formData.mediaId);
+    if(formData.mediaId){ // for existing movies in DB
+      media = await Media.findById(formData.mediaId);
+      console.log("media: ", media);
+      // const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData })  
+      // reco.save();
+    } else { // for new movies in DB
+      media = new Media({ ownerId: req.params.userId, movie: formData});
+      await media.save()
+    }
+    
+    user.recommendations.push({ media: media, ...formData,});
+    await user.save();
+    console.log("user: ", user);
+    res.redirect(`/users/${req.params.userId}/recommendations/movies`);
+  } catch(e) {
+    console.log("Error: ", e)
+  }
+});
+
+router.post('/users/:userId/recommendations/shows/new', ensureSignedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const formData = req.body;
+    let media;
+    console.log("formdata.mediaid: ", formData.mediaId);
+    if(formData.mediaId){ // for existing movies in DB
+      media = await Media.findById(formData.mediaId);
+      console.log("media: ", media);
+      // const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData })  
+      // reco.save();
+    } else { // for new movies in DB
+      media = new Media({ ownerId: req.params.userId, contentType: 'show', show: formData});
+      await media.save()
+      console.log("media: ", media);
+    }
+    
+    user.recommendations.push({ media: media, ...formData,});
+    await user.save();
+    console.log("user: ", user);
+    res.redirect(`/users/${req.params.userId}/recommendations/shows`);
+  } catch(e) {
+    console.log("Error: ", e)
+  }
+});
+
 router.post('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, async (req, res) => {
   try {
     const user = await User.findById(req.params.userId).populate('movie');
@@ -151,7 +203,7 @@ router.post('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, as
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/movies`);
   }
-
+  
 });
 
 router.post('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
@@ -176,49 +228,7 @@ router.post('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, asy
 
 
 // POST request.. create functionality 
-router.post('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId);
-    const formData = req.body;
-    let media;
 
-    if(formData.mediaId){ // for existing movies in DB
-      media = await Media.findById(formData.mediaId);
-      // const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData })  
-      // reco.save();
-    } else { // for new movies in DB
-      media = new Media({ ownerId: req.params.userId, movie: formData, contentType: 'movie' });
-      await media.save()
-    }
-
-    user.recommendations.push({ media: media._id, ...formData,});
-    await user.save();
-
-    res.redirect(`/users/${req.params.userId}/recommendations/movies`);
-  } catch(e) {
-    console.log("Error: ", e)
-  }
-});
-
-router.post('/users/:userId/recommendations/shows/new', ensureSignedIn, async (req, res) => {
-  try {
-    const formData = req.body;
-    console.log('form: ', formData);
-
-    // if(formData.mediaId){ // for existing movies in DB
-    //   const media = await Media.findById(formData.mediaId);
-    //   const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData })  
-    //   reco.save();
-    // } else { // for new movies in DB
-      const media = new Media({ ownerId: req.params.userId, show: formData, contentType: 'show' });
-      await media.save()
-      const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData });
-      await reco.save()
-      res.redirect(`/users/${req.params.userId}/recommendations/shows`)
-    } catch(e) {
-    console.log("Error: ", e)
-  }
-});
 
 
 module.exports = router;

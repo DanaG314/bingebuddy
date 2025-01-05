@@ -108,27 +108,18 @@ const seriesSchema = new Schema ({
 });
 
 const mediaSchema = new Schema ({
-    // contentType: {
-    //     type: String,
-    //     enum: ['movie', 'show', 'series'],
-    //     required: true
-    // },
+    contentType: {
+        type: String,
+        enum: ['movie', 'show', 'series'],
+        required: true
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    movie: {
-        type: Schema.Types.ObjectId,
-        ref: 'Movie'
-    },
-    show: {
-        type: Schema.Types.ObjectId,
-        ref: 'Show'
-    },
-    series: {
-        type: Schema.Types.ObjectId,
-        ref: 'Series'
-    },
+    movie: movieSchema,
+    show: showSchema,
+    series: seriesSchema
 });
 
 
