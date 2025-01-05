@@ -2,61 +2,47 @@
 <div class="card">
     <div class="card-body">
 
+        <form action="/users/<%= user._id %>/recommendations/movies/<%= reco._id %>" method="POST">
+            <div>
+                <label for="note" class="form-label">Notes:</label>
+                <textarea type="text" name="note" id="note" class="form-control"><%= reco.note %></textarea>
+            </div>
+
+            <div>
+                <label for="title" class="form-label">Movie Title:</label>
+                <input type="text" name="title" id="title" class="form-control" value="<%= curMedia.movie?.title %>"/>
+            </div>
+        
+            <div>
+            <label for="description" class="form-label">Description:</label>
+            <textarea name="description" id="description" class="form-control"><%= curMedia.movie?.description %></textarea>
+            </div>
+        
+            <div>
+            <label for="genre" class="form-label">Genre:</label>
+            <input type="text" name="genre" id="genre" class="form-control" value="<%= curMedia.movie?.genre %>">
+            </div>
+        
+            <div>
+            <label for="year" class="form-label">Release Year:</label>
+            <input type="number" name="year" id="year" class="form-control" value="<%= curMedia.movie?.year %>">
+            </div>
+        
+            <div>
+            <label for="rating" class="form-label">Rating (0-10):</label>
+            <input type="number" name="rating" id="rating" min="0" max="10" step="0.1" class="form-control" value="<%= curMedia.movie?.rating %>">
+            </div>
+        
+            <div>
+            <label for="imageUrl" class="form-label">Movie Image URL:</label>
+            <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="form-control" value="<%= curMedia.movie?.imageUrl %>">
+            </div>    
+         
+            <input type="hidden" value="movie" name="contentType" />
+        
+            <button type="submit">Update Recommendation</button>
+        </form>
     </div>
 </div>
-<form action="/users/<%= user._id %>/recommendations/<%= reco._id %>" method="POST">
-    <div>
-        <label for="mediaId" class="form-label">Movie</label>
-        <select name="mediaId" id="mediaId" class="form-control">
-            <% movies.forEach(media => { %>
-                <option value="<%= media._id %>" <%= String(curMedia._id) === String(media._id) ? "selected" : "" %>>
-                    <%= media?.movie.title %>
-                </option>
-                <% }) %>
-                <option value="">-- NEW MOVIE --</option>
-        </select>
-    </div>
-    <div>
-
-    </div>
-    <label name="note" value="note">Note</label>
-    <textarea type="text" name="note"></textarea>
-    <h1>OR</h1>
-    <br />
-
-    <div>
-        <label for="title">Movie Title:</label>
-        <input type="text" name="title" id="title" />
-    </div>
-
-    <div>
-    <label for="description">Description:</label>
-    <textarea name="description" id="description"></textarea>
-    </div>
-
-    <div>
-    <label for="genre">Genre:</label>
-    <input type="text" name="genre" id="genre">
-    </div>
-
-    <div>
-    <label for="year">Release Year:</label>
-    <input type="number" name="year" id="year">
-    </div>
-
-    <div>
-    <label for="rating">Rating (0-10):</label>
-    <input type="number" name="rating" id="rating" min="0" max="10" step="0.1">
-    </div>
-
-    <div>
-    <label for="imageUrl">Movie Image URL:</label>
-    <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg">
-    </div>    
- 
-    <input type="hidden" value="movie" name="contentType" />
-
-    <button type="submit">Update Recommendation</button>
-</form>
 
 <%- include('../../partials/footer.ejs') %>

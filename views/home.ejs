@@ -1,4 +1,5 @@
 <%- include('./partials/navbar.ejs', { active: 'home' }) %>
+
 <% if (!user) { %>  
   <div class="row mt-5">
     <div class="col-lg" style="display: flex; height: 100%; text-align: center; flex-direction: column; justify-content: center;">
@@ -27,33 +28,7 @@
       </form>
     </div>
   </div>
-  
-  <!-- <div id="landing-container">
-  <div id="welcome-container">
-
-    
-    <section id="hp-section">
-      <h1>Welcome to BingeBuddy</h1>
-      <p>Join BingeBuddy to recommend your favorite movies, shows, and series!</p>
-      <p>Explore recommendations from a community of fellow binge-watchers.</p>
-      <h2>Sign up now and start building your watchlist!</h2>
-    </section>
-    </div>
-      <div id="sign-in-container">
-        <h2>Already have an account? Sign In below:</h2>
-        <form action="/auth/sign-in" method="POST" id="sign-in-form">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" placeholder="Enter your username" required />
-          
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required />
-          
-          <button type="submit">Sign In</button>
-        </form>
-        <br/>
-      </div>
-    </div> -->
-      <% } else { %>
-        <h1>Welcome back to BingeBuddy <%= user.name %>!</h1>
-      <% } %>
+<% } else { %>
+  <h1>Welcome back to BingeBuddy <%= user.name %>!</h1>
+<% } %>
 <%- include('./partials/footer.ejs') %>

@@ -9,7 +9,7 @@
             <ul id="show-listing">
                 <% showRecommendations.forEach(reco => { %>
                     <li>
-                        <img src="<%= reco.media.show?.imageUrl %>" alt="<%= reco.media.show?.title %>" />
+                        <img src="<%= reco.media.show?.imageUrl %>" alt="<%= reco.media.show?.title %>" style="width: 250px;" />
                         <a href="/users/<%= user._id %>/recommendations/shows/<%= reco.media._id %>"><h2><%= reco.media.show?.title %></h2></a>
                     </li>
                 <% }) %>

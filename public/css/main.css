@@ -50,6 +50,10 @@ p, main a {
   justify-content: flex-start;
 }
 
+#show-image {
+  width: 350px;
+}
+
 #movie-listing, #show-listing {
   display: inline-flex;
   flex-wrap: wrap;

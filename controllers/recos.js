@@ -89,7 +89,7 @@ router.get('/users/:userId/recommendations/shows/:mediaId/edit', ensureSignedIn,
   }
 });
 
-router.delete('/users/:userId/recommendations/:recoId', ensureSignedIn, async (req, res) => {
+router.delete('/users/:userId/recommendations/movies/:recoId', ensureSignedIn, async (req, res) => {
   try {
     // 1. find the recommendation object using req.params.recoId
     const recommendation = await Reco.findById(req.params.recoId);
@@ -107,15 +107,59 @@ router.delete('/users/:userId/recommendations/:recoId', ensureSignedIn, async (r
   }
 });
 
-router.post('/users/:userId/recommendations/:recoId', ensureSignedIn, async (req, res) => {
+router.post('/users/:userId/recommendations/movies/:recoId', ensureSignedIn, async (req, res) => {
   try {
-    const recommendation = await Reco.findByIdAndUpdate(req.params.recoId, req.body);
+    const recommendation = await Reco.findByIdAndUpdate(
+      req.params.recoId, // find by this ID
+      req.body, // update document based on req.body
+      { new: true } // Ensures the returned document is the updated one
+    );
+
+    if (!recommendation.media || !recommendation.media._id) {
+      throw new Error("Media not found in the updated recommendation.");
+    }
+
+    const media = await Media.findById(recommendation.media._id).populate('movie');
+    media.movie = req.body;
+
+    await media.save();
     await recommendation.save();
-    console.log("reco: ", recommendation);
-    res.redirect(`/users/${req.params.userId}/recommendations/movies/${req.body.mediaId}`);
+    
+    res.render('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
   } catch (e) {
     console.log(e);
     res.redirect(`/users/${req.params.userId}/recommendations/movies`);
+  }
+
+});
+
+router.post('/users/:userId/recommendations/shows/:recoId', ensureSignedIn, async (req, res) => {
+  try {
+    const recommendation = await Reco.findByIdAndUpdate(
+      req.params.recoId, // find by this ID
+      req.body, // update document based on req.body
+      { new: true } // Ensures the returned document is the updated one
+    );
+    
+    if (!recommendation.media || !recommendation.media._id) {
+      throw new Error("Media not found in the updated recommendation.");
+    }
+
+    const media = await Media.findById(recommendation.media._id).populate('show');
+    media.show = req.body;
+
+    // Save the updated document
+    console.log("trying to save media")
+    await media.save();
+    console.log("Saved media")
+    console.log("trying to save reco")
+    await recommendation.save();
+    console.log("saved reco")
+    
+    res.render('users/shows/show.ejs', { show: media?.show, media, recommendation });
+  } catch (e) {
+    console.log(e);
+    res.redirect(`/users/${req.params.userId}/recommendations/shows`);
   }
 
 });
