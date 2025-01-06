@@ -131,14 +131,11 @@ router.post('/users/:userId/recommendations/movies/new', ensureSignedIn, async (
     const formData = req.body;
     let media;
     console.log("formdata.mediaid: ", formData.mediaId);
-    if(formData.mediaId){ // for existing movies in DB
+    if (formData.mediaId === 'newMovie') {
+      media = new Media({ owner: user._id, movie: formData, contentType: 'movie' });
+      await media.save();
+    } else {
       media = await Media.findById(formData.mediaId);
-      console.log("media: ", media);
-      // const reco = new Reco({ ownerId: req.params.userId, media: media, ...formData })  
-      // reco.save();
-    } else { // for new movies in DB
-      media = new Media({ ownerId: req.params.userId, movie: formData});
-      await media.save()
     }
     
     user.recommendations.push({ media: media, ...formData,});

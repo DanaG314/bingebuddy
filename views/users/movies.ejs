@@ -7,10 +7,14 @@
         <% if (movieRecommendations && movieRecommendations.length > 0) { %>
         <ul id="movie-listing">
             <% movieRecommendations.forEach(reco => { %>
-                <li>
-                    <img src="<%= reco.media.movie?.imageUrl %>" style="width: 250px;" alt="<%= reco.media.movie?.title %>" />
-                    <a href="/users/<%= user._id %>/recommendations/movies/<%= reco.media._id %>"><h2><%= reco.media.movie?.title %></h2></a>
-                </li>
+                <div class="card">
+                    <div class="card-info">
+                        <li>
+                            <img src="<%= reco.media.movie?.imageUrl %>" alt="<%= reco.media.movie?.title %>" />
+                            <a href="/users/<%= user._id %>/recommendations/movies/<%= reco.media._id %>" class="button"><h2><strong><%= reco.media.movie?.title %></strong></h2></a>
+                        </li>
+                    </div>
+                  </div>
             <% }) %>
         </ul>
         <% } else { %>

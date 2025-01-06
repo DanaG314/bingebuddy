@@ -20,6 +20,41 @@ footer {
   color: lightslategray;
 }
 
+ul#movie-listing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin-top: 30px; */
+}
+
+ul#movie-listing li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 4px solid #ff5757; */
+  /* padding: 20px; */
+  object-fit: cover;
+  margin-top: 40px;
+}
+
+.card {
+  margin-top: 30px;
+}
+
+
+
+ul#movie-listing h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+ul#movie-listing img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
 .navbar-brand img {
   max-width: 200px;
 }
@@ -41,6 +76,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+}
+
+a.button {
+  text-decoration: none !important;
+  color: black !important;
+  margin: 10px;
 }
 
 p, main a {
@@ -174,12 +215,12 @@ a.movies, a.shows {
   justify-content: space-evenly;
 }
 
-.image {
-  width: 400px;
-  height: 400px;
+/* .image {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-}
+} */
 
 /* form {
   display: grid;

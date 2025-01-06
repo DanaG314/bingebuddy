@@ -1,7 +1,7 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div class="card mb-4" style="width: 100%;">
     <div class="card-body">
-        <form id="new-movie-reco" action="<%= actionLink %>" method="POST">
+        <form id="new-movie-reco" action="/users/<%= user._id %>/recommendations/movies/new" method="POST">
             <div>
                 <label for="mediaId" class="form-label">Movie</label>
                 <select name="mediaId" id="mediaId" class="form-control">
