@@ -20,22 +20,28 @@ footer {
   color: lightslategray;
 }
 
-ul#movie-listing {
+ul#movie-listing, ul#show-listing {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  list-style: none;
   /* margin-top: 30px; */
 }
 
-ul#movie-listing li{
+ul#movie-listing li, ul#show-listing li{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   /* border: 4px solid #ff5757; */
-  /* padding: 20px; */
+  padding: 20px;
   object-fit: cover;
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  text-align: center;
+  margin: 0px 10px;
+  max-width: 250px;
+  min-width: 250px;
 }
 
 .card {
@@ -44,12 +50,12 @@ ul#movie-listing li{
 
 
 
-ul#movie-listing h2 {
+ul#movie-listing h2, ul#show-listing h2 {
   font-size: 20px;
   margin-top: 10px;
 }
 
-ul#movie-listing img {
+ul#movie-listing img, ul#show-listing img {
   width: 200px;
   height: 300px;
   object-fit: cover;
@@ -91,23 +97,10 @@ p, main a {
   justify-content: flex-start;
 }
 
-#show-image {
+/* #show-image {
   width: 350px;
-}
+} */
 
-#movie-listing, #show-listing {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  list-style: none;
-}
-
-#movie-listing li, #show-listing li {
-  margin: 0px 10px;
-  max-width: 250px;
-  min-width: 250px;
-  text-align: center;
-}
 
 
 section.label {

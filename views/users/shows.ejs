@@ -8,10 +8,14 @@
             <% if (showRecommendations && showRecommendations.length > 0) { %>
             <ul id="show-listing">
                 <% showRecommendations.forEach(reco => { %>
-                    <li>
-                        <img src="<%= reco.media.show?.imageUrl %>" alt="<%= reco.media.show?.title %>" style="width: 250px;" />
-                        <a href="/users/<%= user._id %>/recommendations/shows/<%= reco.media._id %>"><h2><%= reco.media.show?.title %></h2></a>
-                    </li>
+                    <div class="card">
+                        <div class="card-info">
+                            <li>
+                                <img src="<%= reco.media.show?.imageUrl %>" alt="<%= reco.media.show?.title %>" />
+                                <a href="/users/<%= user._id %>/recommendations/shows/<%= reco.media._id %>" class="button"><h2><strong><%= reco.media.show?.title %></strong></h2></a>
+                            </li>
+                        </div>
+                      </div>
                 <% }) %>
             </ul>
             <% } else { %>

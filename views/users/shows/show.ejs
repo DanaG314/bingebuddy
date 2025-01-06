@@ -4,7 +4,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0" style="display: inline-flex;">
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="/users/<%= user?._id %>/recommendations/shows">Back to Movies</a>
+                    <a href="/users/<%= user?._id %>/recommendations/shows">Back to Shows</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <%= show.title %>
@@ -26,7 +26,7 @@
                 </div>
                 
             </div>
-            <div class="col-lg-9" style="max-height: 400px;">
+            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
                 <h1><%= show.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= show.genre %></h4>
@@ -35,13 +35,17 @@
                     <h4>Seasons: <%= show.seasons %></h4>
                     <h4>Episodes: <%= show.episodes %></h4>
                 </div>
+                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                    <p id="description"><strong>Description:</strong> <%= show.description %></p>
+                </div>
+                <% if (!recommendation.note) { %>
+                   
+                    <% } else { %>
+                        <p><strong>Notes:</strong> <%= recommendation.note %></p>
+                    <% } %>
+            </div>
             </div>
         </div>
-        <div>
-            <p id="description"><strong>Description:</strong> <%= show.description %></p>
-        </div>
-        <p>Notes: <%= recommendation.note %></p>
-    </div>
 </div>
 
 <%- include('../../partials/footer.ejs') %>

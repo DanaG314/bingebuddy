@@ -5,7 +5,7 @@
         <form action="/users/<%= user._id %>/recommendations/movies/<%= curMedia?._id %>?_method=PUT" method="POST">
             <div>
                 <label for="note" class="form-label">Notes:</label>
-                <textarea type="text" name="note" id="note" class="form-control"><%= curMedia?.note %></textarea>
+                <textarea type="text" name="note" id="note" class="form-control"><%= curMedia.movie?.note %></textarea>
             </div>
 
             <div>
