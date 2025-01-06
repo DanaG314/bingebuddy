@@ -206,11 +206,11 @@ router.put('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, asy
   
 });
 
-router.post('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
+router.put('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
 
-    const recommendation = user.recommendations.find((reco) => rec.media?._id.toString() === req.params.mediaId);
+    const recommendation = user.recommendations.find((reco) => reco.media?._id.toString() === req.params.mediaId);
     Object.assign(recommendation, req.body);
     const media = await Media.findById(req.params.mediaId).populate('show');
     
