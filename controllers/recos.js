@@ -176,9 +176,9 @@ router.post('/users/:userId/recommendations/shows/new', ensureSignedIn, async (r
   }
 });
 
-router.post('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, async (req, res) => {
+router.put('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId).populate('movie');
+    const user = await User.findById(req.params.userId).populate('recommendations.media');
     const recommendation = user.recommendations?.find((rec) => rec.media?._id.toString() === req.params.mediaId);
     if (!recommendation) {
       console.log('Recommendation not found');
