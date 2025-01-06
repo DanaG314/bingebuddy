@@ -89,7 +89,7 @@ const seriesSchema = new Schema ({
         required: true
     },
     year: {
-        type: Date,
+        type: Number,
         required: true
     },
     completed: {
@@ -101,7 +101,7 @@ const seriesSchema = new Schema ({
     }],
     owner: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     }
 }, {
     timestamps: true
@@ -115,7 +115,7 @@ const mediaSchema = new Schema ({
     },
     owner: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     },
     movie: movieSchema,
     show: showSchema,

@@ -25,7 +25,7 @@ router.get('/users/:userId/recommendations/movies', ensureSignedIn, async (req, 
   const newLink = `/users/${req.params.userId}/recommendations/movies/new`;
   const movieRecommendations = user.recommendations.filter((r) => r.media?.contentType == "movie");
   console.log("Movie Rec: ",movieRecommendations);
-  res.render('users/movies.ejs',{ movieRecommendations, newLink });
+  res.render('users/movies/index.ejs',{ movieRecommendations, newLink });
 });
 
 router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, res) => {
@@ -33,7 +33,14 @@ router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, r
   const newLink = `/users/${req.params.userId}/recommendations/shows/new`;
   const showRecommendations = user.recommendations.filter((r) => r.media?.contentType == "show");
   
-  res.render('users/shows.ejs',{ showRecommendations, newLink });
+  res.render('users/shows/index.ejs',{ showRecommendations, newLink });
+});
+
+router.get('/users/:userId/recommendations/series', ensureSignedIn, async (req, res) => {
+  console.log("User ID:", req.params.userId);
+  const user = await User.findById(req.params.userId).populate('recommendations.media');
+  const seriesRecommendations = user.recommendations.filter((r) => r.media?.contentType == 'series');
+  res.render('users/series/index.ejs', { seriesRecommendations })
 });
 
 // GET request .. new functionality 
