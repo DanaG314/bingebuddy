@@ -1,7 +1,7 @@
 <%- include('../partials/navbar.ejs', { active: '' }) %>
-
-<h1>My Movie Recommendations</h1>
-
+<div style="display: flex; justify-content: center; padding: 40px;">
+<h1>Explore Movies!</h1>
+</div>
 <% if (movies && movies.length > 0) { %>
 <ul id="movie-listing">
     <% movies.forEach(movie => { %>
@@ -15,7 +15,7 @@
     <% }) %>
 </ul>
 <% } else { %>
-    <p>You have not created movie recommendations yet!</p>
+    <p>There are no movies.</p>
 <% } %>
 
 <a href="/movies/new">Add New Movie Recommendation</a>

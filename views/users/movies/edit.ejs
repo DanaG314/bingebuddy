@@ -2,40 +2,40 @@
 <div class="card">
     <div class="card-body">
 
-        <form action="/users/<%= user._id %>/recommendations/movies/<%= curMedia?._id %>?_method=PUT" method="POST">
+        <form action="/movies/user-movies/<%= movie._id %>?_method=PUT" method="POST">
             <div>
                 <label for="note" class="form-label">Notes:</label>
-                <textarea type="text" name="note" id="note" class="form-control"><%= curMedia.movie?.note %></textarea>
+                <textarea type="text" name="note" id="note" class="form-control"><%= movie?.note %></textarea>
             </div>
 
             <div>
                 <label for="title" class="form-label">Movie Title:</label>
-                <input type="text" name="title" id="title" class="form-control" value="<%= curMedia.movie?.title %>"/>
+                <input type="text" name="title" id="title" class="form-control" value="<%= movie?.title %>"/>
             </div>
         
             <div>
             <label for="description" class="form-label">Description:</label>
-            <textarea name="description" id="description" class="form-control"><%= curMedia.movie?.description %></textarea>
+            <textarea name="description" id="description" class="form-control"><%= movie?.description %></textarea>
             </div>
         
             <div>
             <label for="genre" class="form-label">Genre:</label>
-            <input type="text" name="genre" id="genre" class="form-control" value="<%= curMedia.movie?.genre %>">
+            <input type="text" name="genre" id="genre" class="form-control" value="<%= movie?.genre %>">
             </div>
         
             <div>
             <label for="year" class="form-label">Release Year:</label>
-            <input type="number" name="year" id="year" class="form-control" value="<%= curMedia.movie?.year %>">
+            <input type="number" name="year" id="year" class="form-control" value="<%= movie?.year %>">
             </div>
         
             <div>
             <label for="rating" class="form-label">Rating (0-10):</label>
-            <input type="number" name="rating" id="rating" min="0" max="10" step="0.1" class="form-control" value="<%= curMedia.movie?.rating %>">
+            <input type="number" name="rating" id="rating" min="0" max="10" step="0.1" class="form-control" value="<%= movie?.rating %>">
             </div>
         
             <div>
             <label for="imageUrl" class="form-label">Movie Image URL:</label>
-            <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="form-control" value="<%= curMedia.movie?.imageUrl %>">
+            <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="form-control" value="<%= movie?.imageUrl %>">
             </div>    
          
             <input type="hidden" value="movie" name="contentType" />

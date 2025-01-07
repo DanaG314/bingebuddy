@@ -1,22 +1,8 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div class="card mb-4" style="width: 100%;">
     <div class="card-body">
-        <form id="new-movie-reco" action="/users/<%= user._id %>/recommendations/movies/new" method="POST">
-            <div>
-                <label for="mediaId" class="form-label">Movie</label>
-                <select name="mediaId" id="mediaId" class="form-control">
-                    <% movies.forEach(media => { %>
-                        <option value="<%= media._id %>">
-                            <%= media.movie?.title %>
-                        </option>
-                    <% }) %>
-                    <option value="newMovie">-- NEW MOVIE --</option>
-                </select>
-            </div>
-            <div>
-                <label name="note" class="form-label">Note</label>
-                <textarea type="text" name="note" class="form-control"></textarea>
-            </div> 
+        <form id="new-movie-reco" action="/movies/user-movies/new" method="POST">
+           
             
             <div class="newMovieSection">
                 <div>
@@ -27,6 +13,11 @@
                 <div>
                     <label for="description" class="form-label">Description:</label>
                     <textarea name="description" id="description" class="form-control" rows="3" cols="10"></textarea>
+                </div>
+                
+                <div>
+                    <label for="note" class="form-label">Notes:</label>
+                    <textarea name="note" id="not" class="form-control" rows="3" cols="10"></textarea>
                 </div>
                 
                 <div>
@@ -58,7 +49,7 @@
 </div>
 
 <!-- JQUERY -->
-<script>
+<!-- <script>
     $(document).ready(function(){
         // onLoad
         $('.newMovieSection').hide();
@@ -74,6 +65,6 @@
             }
         });
     }) 
-</script>
+</script> -->
 
 <%- include('../../partials/footer.ejs') %>

@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Media = require('../models/media')
+const Show = require('../models/tvshows')
+const Movie = require('../models/movies')
 // Middleware to protect selected routes
 const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 
 
-router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) => {
-  try {
-    const recommendations = req.user.recommendations;
-    const moviesLink = `/users/${req.params.userId}/recommendations/movies`;
-    res.render('users/show.ejs', { recommendations, title: 'My Recommendations', moviesLink  });
-  } catch (e) {
-    console.log(e);
-    res.redirect('/');
-  }
-});
+// router.get('/users/:userId/recommendations', ensureSignedIn, async (req, res) => {
+//   try {
+//     const recommendations = req.user.recommendations;
+//     const moviesLink = `/users/${req.params.userId}/recommendations/movies`;
+//     res.render('users/show.ejs', { recommendations, title: 'My Recommendations', moviesLink  });
+//   } catch (e) {
+//     console.log(e);
+//     res.redirect('/');
+//   }
+// });
 
 // GET request to /users/:userId/recommendations/movies index functionality 
 router.get('/users/:userId/recommendations/movies', ensureSignedIn, async (req, res) => {
-  const user = await User.findById(req.params.userId).populate('recommendations.media');
   console.log("user: ", user);
   const newLink = `/users/${req.params.userId}/recommendations/movies/new`;
   const movieRecommendations = user.recommendations.filter((r) => r.media?.contentType == "movie");
@@ -36,20 +36,15 @@ router.get('/users/:userId/recommendations/shows', ensureSignedIn, async (req, r
   res.render('users/shows/index.ejs',{ showRecommendations, newLink });
 });
 
-router.get('/users/:userId/recommendations/series', ensureSignedIn, async (req, res) => {
-  console.log("User ID:", req.params.userId);
-  const user = await User.findById(req.params.userId).populate('recommendations.media');
-  const seriesRecommendations = user.recommendations.filter((r) => r.media?.contentType == 'series');
-  res.render('users/series/index.ejs', { seriesRecommendations })
-});
+
 
 // GET request .. new functionality 
-router.get('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
-  const movies = await Media.find({ contentType: 'movie' }).populate('movie');
-  console.log('movies: ', movies);
-  const actionLink = `/users/${req.params.userId}/recommendations/movies/new`;
-  res.render('users/movies/new.ejs', { movies, actionLink })
-});
+// router.get('/users/:userId/recommendations/movies/new', ensureSignedIn, async (req, res) => {
+//   const movies = await Media.find({ contentType: 'movie' }).populate('movie');
+//   console.log('movies: ', movies);
+//   const actionLink = `/users/${req.params.userId}/recommendations/movies/new`;
+//   res.render('users/movies/new.ejs', { movies, actionLink })
+// });
 
 router.get('/users/:userId/recommendations/shows/new', ensureSignedIn, async (req, res) => {
   const shows = await Media.find({ contentType: 'show' }).populate('show');
@@ -180,35 +175,7 @@ router.post('/users/:userId/recommendations/shows/new', ensureSignedIn, async (r
   }
 });
 
-router.put('/users/:userId/recommendations/movies/:mediaId', ensureSignedIn, async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId).populate('recommendations.media');
-    const recommendation = user.recommendations?.find((rec) => rec.media?._id.toString() === req.params.mediaId);
-    if (!recommendation) {
-      console.log('Recommendation not found');
-      const newRecommendation = {
-        media: req.params.mediaId,
-        ...req.body,
-      };
-      user.recommendations.push(newRecommendation);
-    } else {
-      Object.assign(recommendation, req.body);
-    }
-    await user.save();
-    // console.log('body: ', req.body)
-    // console.log('recommendation: ', recommendation)
-    // console.log('userrecommendations: ', user.recommendations);
-    const media = await Media.findById(req.params.mediaId).populate('movie');
-    Object.assign(media.movie, req.body);
-    await media.save();
-    
-    res.render('users/movies/show.ejs', { movie: media?.movie, media, recommendation });
-  } catch (e) {
-    console.log(e);
-    res.redirect(`/users/${req.params.userId}/recommendations/movies`);
-  }
-  
-});
+
 
 router.put('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
   try {

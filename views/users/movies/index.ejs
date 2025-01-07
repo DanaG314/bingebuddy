@@ -1,17 +1,17 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div style="display: flex; justify-content: center; padding: 40px;">
-<h1>My Movie Recommendations</h1>
+<h1>My Movies</h1>
 </div>
 <div class="row">
     <div class="col">
-        <% if (movieRecommendations && movieRecommendations.length > 0) { %>
+        <% if (movies && movies.length > 0) { %>
         <ul id="movie-listing">
-            <% movieRecommendations.forEach(reco => { %>
+            <% movies.forEach(movie => { %>
                 <div class="card">
                     <div class="card-info">
                         <li>
-                            <img src="<%= reco.media.movie?.imageUrl %>" alt="<%= reco.media.movie?.title %>" />
-                            <a href="/users/<%= user._id %>/recommendations/movies/<%= reco.media._id %>" class="button"><h2><strong><%= reco.media.movie?.title %></strong></h2></a>
+                            <img src="<%= movie?.imageUrl %>" alt="<%= movie?.title %>" />
+                            <a href="/movies/user-movies/<%= movie._id %>" class="button"><h2><strong><%= movie?.title %></strong></h2></a>
                         </li>
                     </div>
                   </div>
@@ -24,6 +24,6 @@
         
     </div>
 </div>
-<a href="<%= newLink %>" style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">Add New Movie Recommendation</a>
+<a href="/movies/user-movies/new" style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">Add New Movie</a>
 
 <%- include('../../partials/footer.ejs') %>

@@ -4,15 +4,15 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0" style="display: inline-flex;">
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="/users/<%= user?._id %>/recommendations/movies">Back to Movies</a>
+                    <a href="/movies/user-movies">Back to Movies</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <%= movie.title %>
                 </li>
             </ol>
             <div style="display: inline-flex; float: right;">
-                <a class="btn btn-primary" href="/users/<%= user?._id %>/recommendations/movies/<%= media._id %>/edit">Edit</a>
-                <form action="/users/<%= user._id %>/recommendations/movies/<%= media._id %>?_method=DELETE" method="POST" id="main">
+                <a class="btn btn-primary" href="/movies/user-movies/<%= movie._id %>/edit">Edit</a>
+                <form action="/movies/user-movies/<%= movie._id %>?_method=DELETE" method="POST" id="main">
                     <button class="btn btn-danger" type="submit">DELETE</button>
                 </form>
             </div>
@@ -36,10 +36,10 @@
                 <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
                     <p id="description"><strong>Description:</strong> <%= movie.description %></p>
                 </div>
-                <% if (!recommendation.note) { %>
+                <% if (!movie.note) { %>
                    
                 <% } else { %>
-                    <p><strong>Notes:</strong> <%= recommendation.note %></p>
+                    <p><strong>Notes:</strong> <%= movie.note %></p>
                 <% } %>
             </div>
         </div>

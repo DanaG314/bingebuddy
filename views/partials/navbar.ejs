@@ -26,7 +26,13 @@
                 <a class="nav-link <%= active == 'home' ? 'active' : '' %>" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <%= active == 'recommendations' ? 'active' : '' %>" href="/users/<%= user._id%>/recommendations">My Recommendations</a>
+                <a class="nav-link <%= active == 'movies' ? 'active' : '' %>" href="/movies/user-movies">My Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <%= active == 'recommendations' ? 'active' : '' %>" href="/users/<%= user._id%>/recommendations">My Tv Shows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <%= active == 'recommendations' ? 'active' : '' %>" href="/users/<%= user._id%>/recommendations">Explore</a>
               </li>
             <% } %>
           </ul>
