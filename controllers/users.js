@@ -1,8 +1,9 @@
 const express = require('express');
+const ensureSignedIn = require('../middleware/ensure-signed-in');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('index.ejs');
+router.get('/', ensureSignedIn, (req, res) => {
+    res.render('home.ejs');
 });
 
 module.exports = router;

@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
 // The "starts with" path is pre-pended to the paths
 // defined in the router module
 app.use('/auth', require('./controllers/auth'));
-app.use('/', require('./controllers/recos'));
+app.use('/shows', require('./controllers/shows'));
 app.use('/users', require('./controllers/users'));
 app.use('/movies', require('./controllers/movies'));
 

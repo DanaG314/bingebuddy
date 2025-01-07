@@ -4,15 +4,15 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0" style="display: inline-flex;">
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="/users/<%= user?._id %>/recommendations/shows">Back to Shows</a>
+                    <a href="/shows/user-shows">Back to Shows</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <%= show.title %>
                 </li>
             </ol>
             <div style="display: inline-flex; float: right;">
-                <a class="btn btn-primary" href="/users/<%= user?._id %>/recommendations/shows/<%= media._id %>/edit">Edit</a>
-                <form action="/users/<%= user._id %>/recommendations/shows/<%= media._id %>?_method=DELETE" method="POST" id="main">
+                <a class="btn btn-primary" href="/shows/user-shows/<%= show._id %>/edit">Edit</a>
+                <form action="/shows/user-shows/<%= show._id %>?_method=DELETE" method="POST" id="main">
                     <button class="btn btn-danger" type="submit">DELETE</button>
                 </form>
             </div>
@@ -38,10 +38,10 @@
                 <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
                     <p id="description"><strong>Description:</strong> <%= show.description %></p>
                 </div>
-                <% if (!recommendation.note) { %>
-                   
+                <% if (!show.note) { %>
+                   <p>No notes were added for this show.</p>
                     <% } else { %>
-                        <p><strong>Notes:</strong> <%= recommendation.note %></p>
+                        <p><strong>Notes:</strong> <%= show.note %></p>
                     <% } %>
             </div>
             </div>

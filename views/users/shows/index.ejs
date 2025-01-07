@@ -1,18 +1,18 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 
 <div style="display: flex; justify-content: center; padding: 40px;">
-    <h1>My Show Recommendations</h1>
+    <h1><%= title %></h1>
     </div>
     <div class="row">
         <div class="col">
-            <% if (showRecommendations && showRecommendations.length > 0) { %>
+            <% if (shows && shows.length > 0) { %>
             <ul id="show-listing">
-                <% showRecommendations.forEach(reco => { %>
+                <% shows.forEach(show => { %>
                     <div class="card">
                         <div class="card-info">
                             <li>
-                                <img src="<%= reco.media.show?.imageUrl %>" alt="<%= reco.media.show?.title %>" />
-                                <a href="/users/<%= user._id %>/recommendations/shows/<%= reco.media._id %>" class="button"><h2><strong><%= reco.media.show?.title %></strong></h2></a>
+                                <img src="<%= show?.imageUrl %>" alt="<%= show?.title %>" />
+                                <a href="/shows/user-shows/<%= show._id %>" class="button"><h2><strong><%= show?.title %></strong></h2></a>
                             </li>
                         </div>
                       </div>
@@ -25,6 +25,6 @@
             
         </div>
     </div>
-    <a href="<%= newLink %>" style="display: flex; justify-content: center; margin-top: 20px;">Add New Show Recommendation</a>
+    <a href="/shows/user-shows/new" style="display: flex; justify-content: center; margin-top: 20px;">Add New Show Recommendation</a>
 
 <%- include('../../partials/footer.ejs') %>
