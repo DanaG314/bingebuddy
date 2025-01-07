@@ -45,47 +45,6 @@ router.get('/user-shows/:showId/edit', ensureSignedIn, async (req, res) => {
 });
 
 
-router.get('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
-  const user = await User.findById(req.params.userId).populate('recommendations.media');
-  const recommendation = user.recommendations.find((rec) => rec.media?._id.toString() === req.params.mediaId);
-  const media = await Media.findById(req.params.mediaId).populate('show');
-  res.render('users/shows/show.ejs', { show: media?.show, media, recommendation });
-});
-
-
-
-router.get('/users/:userId/recommendations/shows/:mediaId/edit', ensureSignedIn, async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId).populate('recommendations.media');
-    const recommendation = user.recommendations.find((rec) => rec.media?._id.toString() === req.params.mediaId);
-    const shows = await Media.find({ contentType: 'show' });
-    const curMedia = await Media.findById(req.params.mediaId).populate('show');
-    res.render('users/shows/edit.ejs', { curMedia, shows, recommendation });
-  } catch (e) {
-    console.log(e);
-    res.redirect(`/users/${req.params.userId}/recommendations/shows`);
-  }
-});
-
-
-
-router.delete('/users/:userId/recommendations/shows/:mediaId', ensureSignedIn, async (req, res) => {
-  try {
-    const user = await User.findByIdAndUpdate(
-      req.params.userId,
-      { $pull: { recommendations: { media: req.params.mediaId } } },
-      { new: true }
-    );
-    res.redirect(`/users/${req.params.userId}/recommendations/shows`);
-    } catch(e) {
-    // 1. return error
-    console.log(e);
-    // 2. redirect back
-    res.redirect(`/users/${req.params.userId}/recommendations/shows`);
-  }
-});
-
-
 router.post('/user-shows/new', ensureSignedIn, async (req, res) => {
   try {
     const newShow = new Show(req.body);

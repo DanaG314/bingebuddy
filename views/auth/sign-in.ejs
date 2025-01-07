@@ -1,11 +1,35 @@
 <%- include('../partials/navbar.ejs', { active: 'signin' }) %>
 
-<form action="/auth/sign-in" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username" />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <button type="submit">SIGN IN</button>
-</form>
+
+<div class="signin-card">
+  <h4 class="signin-title">Log In!</h4>
+  <form action="/auth/sign-in" class="signin" method="POST" >
+    <label class="sigin-field" for="username">
+    
+      <input
+        autocomplete="off"
+        id="username"
+        placeholder="Username"
+        class="login-input-field"
+        name="username"
+        type="text"
+      />
+    </label>
+    <label class="signin-field" for="logpass">
+      <span class="login-input-icon">🔒</span>
+
+      <input
+        id="logpass"
+        placeholder="Password"
+        class="login-input-field"
+        name="logpass"
+        type="password"
+      />
+    </label>
+    <button class="signin-btn" type="button">Login</button>
+    <a class="btn-link">Forgot your password?</a>
+  </form>
+</div>
+
 
 <%- include('../partials/footer.ejs')%>
