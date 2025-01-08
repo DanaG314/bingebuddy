@@ -36,11 +36,11 @@
         <% if (obj.type === 'Movie') { %>
           <%- include ('./partials/moviecard.ejs', { movie: obj })%>
         <% } else { %>
-          <p>Tv Show: <%= obj.title %></p>
+          <%- include('./partials/showcard.ejs', { show: obj })%>
         <% } %>
       <% }) %>
     </ul>
   <% } %>
 <% } %>
-
+</div>
 <%- include('./partials/footer.ejs') %>

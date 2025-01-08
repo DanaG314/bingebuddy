@@ -1,8 +1,33 @@
 <div class="card">
-    <div class="card-info">
-        <li>
-            <img src="<%= movie?.imageUrl %>" alt="<%= movie?.title %>" />
-            <a href="/movies/user-movies/<%= movie._id %>" class="button"><h2><strong><%= movie?.title %></strong></h2></a>
-        </li>
+    <div class="card-header">
+                <h1><%= user.username %></h1>
+            
+        </nav>
     </div>
-  </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3" align="center">
+                <div style="margin: 0 auto;">
+                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px;">
+                </div>
+                
+            </div>
+            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
+                <h1><%= movie.title %></h1>
+                <div id="details-container">
+                    <h4>Genre: <%= movie.genre %></h4>
+                    <h4>Release Year: <%= movie.year %></h4>
+                    <h4>Rating: <%= movie.rating %> </h4>
+                </div>
+                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                    <p id="description"><strong>Description:</strong> <%= movie.description %></p>
+                </div>
+                <% if (!movie.note) { %>
+                   <p>No notes were added for this movie.</p>
+                <% } else { %>
+                    <p><strong>Notes:</strong> <%= movie.note %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
