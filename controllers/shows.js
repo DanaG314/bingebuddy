@@ -50,7 +50,7 @@ router.post('/user-shows/new', ensureSignedIn, async (req, res) => {
     const newShow = new Show(req.body);
     newShow.owner = req.user;
     await newShow.save();
-    res.redirect('/user-shows')
+    res.redirect('/shows/user-shows')
   } catch(e) {
     console.log(e);
     res.redirect('/');

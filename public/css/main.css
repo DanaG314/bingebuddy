@@ -171,7 +171,7 @@ ul#movie-listing h2, ul#show-listing h2 {
   margin-top: 10px;
 }
 
-ul#movie-listing img, ul#show-listing img {
+ul#movie-listing img, ul#show-listing img, ul#feed img {
   width: 200px;
   height: 300px;
   object-fit: cover;

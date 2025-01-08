@@ -43,9 +43,10 @@ const showSchema = new Schema ({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    type: { type: String, default: 'Show' }
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
 

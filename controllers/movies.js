@@ -20,7 +20,7 @@ router.get('/', ensureSignedIn, async (req, res) => {
   });
 
 router.get('/user-movies', ensureSignedIn, async (req, res) => {
-    const movies = await  Movie.find({}).populate('owner');
+    const movies = await  Movie.find({ owner: req.user._id }).populate('owner');
     res.render('users/movies/index.ejs',{ title: 'My Movies', movies });
 });
 
@@ -74,12 +74,12 @@ router.post('/new', ensureSignedIn, async (req, res) => {
     }
 });
 
-router.post('/user-movies', ensureSignedIn, async (req, res) => {
+router.post('/user-movies/new', ensureSignedIn, async (req, res) => {
     try {
         const newMovie = new Movie(req.body);
         newMovie.owner = req.user;
         await newMovie.save();
-        res.redirect('/user-movies');
+        res.redirect('/movies/user-movies');
     } catch (e) {
         console.log(e);
         res.redirect('/');

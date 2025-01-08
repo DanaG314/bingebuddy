@@ -4,6 +4,10 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require('express-session');
+const ensureSignedIn = require("./middleware/ensure-signed-in");
+const Movie = require('./models/movies');
+const Show = require('./models/tvshows');
+
 
 const app = express();
 
@@ -43,8 +47,18 @@ app.use(require('./middleware/add-user-to-locals-and-req'));
 // Routes
 
 // GET /  (home page functionality)
-app.get('/', (req, res) => {
-  res.render('home.ejs', { title: 'Home Page' });
+app.get('/', async (req, res) => {
+  let movies = [];
+  let shows = [];
+  let allContent = [];
+
+  if (req.user) {
+    movies = await Movie.find({}).populate('owner');  
+    shows = await Show.find({}).populate('owner');
+    allContent = [...movies, ...shows];
+  }
+  const sortedContent = allContent.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  res.render('home.ejs', { title: 'Home Page', sortedContent });
 });
 
 // '/auth' is the "starts with" path that the request must match

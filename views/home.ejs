@@ -30,5 +30,17 @@
   </div>
 <% } else { %>
   <h1>Welcome back to BingeBuddy <%= user.name %>!</h1>
+  <% if (sortedContent) { %>
+    <ul id="feed">
+      <% sortedContent.forEach((obj) => { %>
+        <% if (obj.type === 'Movie') { %>
+          <%- include ('./partials/moviecard.ejs', { movie: obj })%>
+        <% } else { %>
+          <p>Tv Show: <%= obj.title %></p>
+        <% } %>
+      <% }) %>
+    </ul>
+  <% } %>
 <% } %>
+
 <%- include('./partials/footer.ejs') %>
