@@ -1,7 +1,6 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div style="display: flex; justify-content: center; padding: 40px;">
-    
-<h1>My Movies</h1>
+    <h1>My Movies</h1>
 </div>
 <div class="row">
     <div class="col">
@@ -15,7 +14,7 @@
                             <a href="/movies/user-movies/<%= movie._id %>" class="button"><h2><strong><%= movie?.title %></strong></h2></a>
                         </li>
                     </div>
-                  </div>
+                </div>
             <% }) %>
         </ul>
         <% } else { %>
