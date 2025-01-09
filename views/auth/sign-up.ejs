@@ -1,6 +1,63 @@
 <%- include('../partials/navbar.ejs', { active: 'signup' }) %>
 
-<form action="/auth/sign-up" method="POST">
+<div class="signup-card">
+  <h4 class="signup-title">Sign up!</h4>
+  <form action="/auth/sign-up" class="signup" method="POST" >
+    <label class="signup-field" for="name">
+      <input
+        autocomplete="off"
+        id="name"
+        placeholder="Name"
+        class="signup-input-field"
+        name="name"
+        type="text"
+      />
+
+    </label>
+    <label class="signup-field" for="username">
+      <input
+        autocomplete="off"
+        id="username"
+        placeholder="Username"
+        class="signup-input-field"
+        name="username"
+        type="text"
+      />
+
+    </label>
+    <label class="signup-field" for="password">
+      
+
+      <input
+        id="logpass"
+        placeholder="Password"
+        class="signup-input-field"
+        name="password"
+        type="password"
+      />
+    </label>
+    <label class="signup-field" for="password">
+
+      <input
+        id="logpass"
+        placeholder="Confirm Password"
+        class="signup-input-field"
+        name="confirmPassword"
+        type="confirmPassword"
+      />
+    </label>
+    <button class="signup-btn" type="submit">Sign Up!</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+<!-- <form action="/auth/sign-up" method="POST">
   <div class="mb-3">
     <label for="name" class="form-label">Name:</label>
     <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
@@ -18,18 +75,7 @@
     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<!-- <form action="/auth/sign-up" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username" />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <label for="confirmPassword">Confirm Password:</label>
-  <input type="password" name="confirmPassword" id="confirmPassword" />
-  <button type="submit">SIGN UP</button>
 </form> -->
+
 
 <%- include('../partials/footer.ejs')%>

@@ -73,12 +73,13 @@ img#logo {
 
 /*    <--- Log-in Section at login page ---->   */
 
-div.signin-card {
-  --main-col: #ffeba7;
+div.signin-card, div.signup-card {
+  --main-col: #e0e9f8de;
   --bg-col: #2a2b38;
   --bg-field: #1f2029;
-
-  width: 190px;
+  justify-self: center;
+  width: 320px;
+  height: 400px;
   padding: 1.9rem 1.2rem;
   text-align: center;
   background: var(--bg-col);
@@ -87,8 +88,13 @@ div.signin-card {
   user-select: none;
 }
 
+div.signup-card {
+  height: 580px;
+  width: 450px;
+}
+
 /*Inputs*/
-label.signin-field {
+label.signin-field, label.signup-field {
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
@@ -99,7 +105,7 @@ label.signin-field {
   border-radius: 4px;
 }
 
-span.login-input-icon {
+span.login-input-icon, span.signup-input-icon {
   max-width: 1em ;
   color: var(--main-col);
   fill: var(--main-col);
@@ -109,22 +115,23 @@ span.login-input-icon {
   justify-content: center;
 }
 
-input.login-input-field {
+input.login-input-field, input.signup-input-field {
   background: transparent;
   border: none;
   outline: none;
+  border-radius: 5px;
   width: 100%;
   color: var(--main-col);
   padding: 0.5em 1em 0.5em 0;
   caret-color: var(--main-col);
 }
 
-.filed:has(.login-input-field:valid) {
+.filed:has(.login-input-field:valid), .filed:has(.signup-input-field:valid) {
   border: 1px solid var(--main-col);
 }
 
 /*Text*/
-.signin-title {
+.signin-title, .signup-title {
   margin-bottom: 1rem;
   font-size: 1.5em;
   font-weight: 500;
@@ -134,8 +141,8 @@ input.login-input-field {
 }
 
 /*Buttons*/
-.signin-btn {
-  margin: 1rem;
+.signin-btn, .signup-btn {
+  margin: 2rem;
   border: none;
   border-radius: 4px;
   font-weight: bold;
@@ -149,15 +156,15 @@ input.login-input-field {
   cursor: pointer;
 }
 
-.btn-link {
+/* .btn-link {
   color: #f5f5f5;
   display: block;
   font-size: 0.75em;
   transition: color 0.3s ease-out;
-}
+} */
 
 /*Hover & focus*/
-.signin-field input:focus::placeholder {
+.signin-field input:focus::placeholder, .signup-field input:focus::placeholder {
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -173,7 +180,7 @@ input.login-input-field {
   text-decoration: underline;
 }
 
-form.signin {
+form.signin, form.signup {
   font-size: 2vmin;
   padding: none;
   border-radius: none;
@@ -225,15 +232,9 @@ div#feedmoviebody, div#feedshowbody, div#movieviewbody, div#showviewbody {
   color: white;
 }
 
-/* .card {
-  margin-top: 30px;
-} */
-
 a.nav-link {
   font-size: 20px;
 }
-
-
 
 ul#movie-listing h2, ul#show-listing h2 {
   font-size: 35px;
@@ -284,12 +285,6 @@ p, main a {
   justify-content: flex-start;
 }
 
-/* #show-image {
-  width: 350px;
-} */
-
-
-
 section.label {
   display: flex;
   justify-content: center;
@@ -339,17 +334,6 @@ div.container {
   justify-content: space-around;
 }
 
-/* #sign-up-section form {
-  margin-top: 30px;
-  text-align: center;
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-} */
-
 nav span {
   font-size: 1.5vmin;
   color: lightslategray;
@@ -365,38 +349,17 @@ main {
   justify-self: center; */
 }
 
-/* img#movie-image {
-  height: 400px;
-  width: 400px;
-} */
-
-/* section.container {
-  display: inline-flex;
-  flex-direction: column;
-  width: 300px;
-  height: 300px;
-  justify-self: center;
-} */
-
 a.movies, a.shows {
   display: flex;
   justify-content: center;
   width: 200px;
 }
 
-/* #container {
-  display: inline;
-  flex-direction: row;
-  border: 15px solid pink;
-} */
-
 #welcome-container {
   display: inline-flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-
-
 
 form * {
   font-size: 2vmin;
@@ -418,4 +381,3 @@ button:hover {
   background-color: lightslategray;
   color: white;
 }
-
