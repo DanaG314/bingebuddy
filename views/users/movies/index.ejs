@@ -7,7 +7,7 @@
         <% if (movies && movies.length > 0) { %>
         <ul id="movie-listing">
             <% movies.forEach(movie => { %>
-                <div class="card">
+                <div class="movie-card">
                     <div class="card-info">
                         <li>
                             <img src="<%= movie?.imageUrl %>" alt="<%= movie?.title %>" />
@@ -18,7 +18,7 @@
             <% }) %>
         </ul>
         <% } else { %>
-            <p>You have not created movie recommendations yet!</p>
+            <p>You have not added any movies yet!</p>
         <% } %>
         
         

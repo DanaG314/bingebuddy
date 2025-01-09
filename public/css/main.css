@@ -22,6 +22,50 @@ footer {
   color: lightslategray;
 }
 
+.movie-card {
+  position: relative;
+  width: 300px;
+  height: 450px;
+  margin: 20px auto;
+  background: #f2f6d2db;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5),
+              0 0 30px rgba(255, 255, 255, 0.3); /* Glow effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  transform: rotate(45deg);
+  animation: spotlight 3s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes spotlight {
+  from {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  to {
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+}
+
+/* Image Styling */
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
 /*    <--- Log-in Section at login page ---->   */
 
 div.signin-card {
@@ -161,7 +205,19 @@ div.card {
 }
 
 div.card-info {
-  background-image: url(https://media1.giphy.com/media/FlodpfQUBSp20/200.webp?cid=790b7611mluv7o09gi4tt037rlwj2gvelyt5oqcgt8jq95ki&ep=v1_gifs_search&rid=200.webp&ct=g);
+ 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div#feedmovie {
+  background-color: #212529;
+  color: white;
+}
+
+div#feedmoviebody {
+  background-color: #353a40;
+  color: white;
 }
 
 /* .card {
@@ -175,7 +231,7 @@ a.nav-link {
 
 
 ul#movie-listing h2, ul#show-listing h2 {
-  font-size: 20px;
+  font-size: 35px;
   margin-top: 10px;
 }
 
@@ -206,11 +262,13 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+
 }
 
 a.button {
   text-decoration: none !important;
-  color: #f5575f !important;
+  font-size: 35px;
+  color: #0c0b0b !important;
   margin: 10px;
 }
 
