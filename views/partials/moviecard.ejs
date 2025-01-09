@@ -1,14 +1,12 @@
 <div class="card">
     <div class="card-header" id="feedmovie">
-                <h1><%= movie.owner %>: Movie</h1>
-            
-        </nav>
+        <h1><%= movie.owner.username %>: 🎞️</h1>            
     </div>
     <div class="card-body" id="feedmoviebody">
         <div class="row">
             <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">
-                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px;">
+                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px; object-fit: contain;">
                 </div>
                 
             </div>

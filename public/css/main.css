@@ -27,7 +27,7 @@ img#logo {
   height: 70px;
 }
 
-.movie-card {
+.movie-card, .show-card {
   position: relative;
   width: 300px;
   height: 450px;
@@ -65,7 +65,7 @@ img#logo {
 }
 
 /* Image Styling */
-.movie-card img {
+.movie-card img, .show-card img {
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -215,12 +215,12 @@ div.card-info {
   background-size: cover;
 }
 
-div#feedmovie, div#movieview {
+div#feedmovie, div#feedshow, div#movieview, div#showview {
   background-color: #212529;
   color: white;
 }
 
-div#feedmoviebody, div#movieviewbody {
+div#feedmoviebody, div#feedshowbody, div#movieviewbody, div#showviewbody {
   background-color: #353a40;
   color: white;
 }

@@ -10,8 +10,8 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 router.get('/user-shows', ensureSignedIn, async (req, res) => {
   try {
-    const shows = await Show.find({}).populate('owner');
-    res.render('users/shows/index.ejs', { title: 'My Shows', shows })
+    const shows = await Show.find({ owner: req.user._id }).populate('owner');
+    res.render('users/shows/index.ejs', { title: 'My Tv Shows', shows })
   } catch (e) {
     console.log(e);
     res.redirect('/')

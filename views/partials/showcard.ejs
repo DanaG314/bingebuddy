@@ -1,17 +1,17 @@
 
 <div class="card">
-    <div class="card-header">
-        <h1><%= show.owner %>: Show</h1>
+    <div class="card-header" id="feedshow">
+        <h1><%= show.owner.username %>: 📺</h1>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="feedshowbody">
         <div class="row">
-            <div class="col-lg-2" align="center">
+            <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">
-                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl" style="width: 250px;">
+                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px; object-fit: contain;">
                 </div>
                 
             </div>
-            <div class="col-lg-6" style="max-height: 400px; margin: 0 auto; text-align: center;">
+            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
                 <h1><%= show.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= show.genre %></h4>

@@ -8,7 +8,7 @@
             <% if (shows && shows.length > 0) { %>
             <ul id="show-listing">
                 <% shows.forEach(show => { %>
-                    <div class="movie-card">
+                    <div class="show-card">
                         <div class="card-info">
                             <li>
                                 <img src="<%= show?.imageUrl %>" alt="<%= show?.title %>" />
@@ -25,6 +25,6 @@
             
         </div>
     </div>
-    <a href="/shows/user-shows/new" style="display: flex; justify-content: center; margin-top: 20px;">Add New Show</a>
+    <a href="/shows/user-shows/new" style="display: flex; justify-content: center; margin-top: 20px;">Add New Tv Show</a>
 
 <%- include('../../partials/footer.ejs') %>
