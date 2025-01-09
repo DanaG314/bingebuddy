@@ -1,13 +1,10 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" id="movieview">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0" style="display: inline-flex;">
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="/movies/user-movies">Back to Movies</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <%= movie.title %>
                 </li>
             </ol>
             <div style="display: inline-flex; float: right;">
@@ -18,7 +15,7 @@
             </div>
         </nav>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="movieviewbody">
         <div class="row">
             <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">

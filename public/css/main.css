@@ -22,12 +22,17 @@ footer {
   color: lightslategray;
 }
 
+img#logo {
+  width: 170px;
+  height: 70px;
+}
+
 .movie-card {
   position: relative;
   width: 300px;
   height: 450px;
   margin: 20px auto;
-  background: #f2f6d2db;
+  background: #c9d2e1c2;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5),
@@ -210,12 +215,12 @@ div.card-info {
   background-size: cover;
 }
 
-div#feedmovie {
+div#feedmovie, div#movieview {
   background-color: #212529;
   color: white;
 }
 
-div#feedmoviebody {
+div#feedmoviebody, div#movieviewbody {
   background-color: #353a40;
   color: white;
 }
@@ -315,7 +320,9 @@ section.label {
 }
 
 div.container {
-  overflow: auto;
+  overflow: overlay;
+  
+  
 }
 
 #hp-section p {
