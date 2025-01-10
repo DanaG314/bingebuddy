@@ -2,12 +2,12 @@
 <div class="card">
     <div class="card-header" id="showview">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0" style="display: inline-flex;">
+            <ol id="shows-breadcrumb" class="breadcrumb mb-0">
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="/shows/user-shows">Back to Tv Shows</a>
                 </li>
             </ol>
-            <div style="display: inline-flex; float: right;">
+            <div id="showsedit-delete">
                 <a class="btn btn-primary" href="/shows/user-shows/<%= show._id %>/edit">Edit</a>
                 <form action="/shows/user-shows/<%= show._id %>?_method=DELETE" method="POST" id="main">
                     <button class="btn btn-danger" type="submit">DELETE</button>
@@ -18,12 +18,12 @@
     <div class="card-body" id="showviewbody">
         <div class="row">
             <div class="col-lg-3" align="center">
-                <div style="margin: 0 auto;">
-                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px;">
+                <div id="showsimage">
+                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl">
                 </div>
                 
             </div>
-            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
+            <div class="col-lg-9" id="shows-show">
                 <h1><%= show.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= show.genre %></h4>
@@ -32,14 +32,14 @@
                     <h4>Seasons: <%= show.seasons %></h4>
                     <h4>Episodes: <%= show.episodes %></h4>
                 </div>
-                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                <div id="shows-show-description">
                     <p id="description"><strong>Description:</strong> <%= show.description %></p>
                 </div>
                 <% if (!show.note) { %>
                    <p>No notes were added for this show.</p>
-                    <% } else { %>
-                        <p><strong>Notes:</strong> <%= show.note %></p>
-                    <% } %>
+                <% } else { %>
+                    <p><strong>Notes:</strong> <%= show.note %></p>
+                <% } %>
             </div>
             </div>
         </div>

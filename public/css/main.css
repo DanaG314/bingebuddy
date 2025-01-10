@@ -6,7 +6,6 @@
 body {
   margin: 0;
   background-color: #4c516f;
-  /* color: #bfa5a5; */
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -27,6 +26,79 @@ img#logo {
   height: 70px;
 }
 
+div#movies-index {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+a#movies-index {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div#movies-new {
+  width: 100%;
+}
+
+div#movies-show, div#shows-show {
+  max-height: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img#movie-image {
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  object-fit: contain;
+}
+
+div#shows-index {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+div#movies-show-description, div#shows-show-description {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  text-align: left; 
+}
+
+div#moviecard-container, div#showcard-container {
+  max-height: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+div#moviecard-description, div#showcard-description {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  text-align: left;
+}
+
+div#moviesimage, div#showsimage {
+  margin: 0 auto;
+}
+
+a#shows-index {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+img#show-image {
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  object-fit: contain;
+}
+
 .movie-card, .show-card {
   position: relative;
   width: 300px;
@@ -40,6 +112,22 @@ img#logo {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+img#show-image {
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  object-fit: contain;
+}
+
+ol#movies-breadcrumb, ol#shows-breadcrumb {
+  display: inline-flex;
+}
+
+div#moviesedit-delete, div#showsedit-delete {
+  display: inline-flex;
+  float: right;
 }
 
 .movie-card::before {
@@ -156,17 +244,29 @@ input.login-input-field, input.signup-input-field {
   cursor: pointer;
 }
 
-/* .btn-link {
-  color: #f5f5f5;
-  display: block;
-  font-size: 0.75em;
-  transition: color 0.3s ease-out;
-} */
-
 /*Hover & focus*/
 .signin-field input:focus::placeholder, .signup-field input:focus::placeholder {
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+h2#landingpage {
+  background-color: #435c86c2;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+div#landingpage-card {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #435c86c2;
+  font-size: 30px;
+  color: #759ec6;
+  border-radius: 10px;
+  margin-right: 140px;
 }
 
 .btn:hover {
@@ -194,7 +294,6 @@ ul#movie-listing, ul#show-listing {
   justify-content: space-evenly;
   flex-wrap: wrap;
   list-style: none;
-  /* margin-top: 30px; */
 }
 
 ul#movie-listing li, ul#show-listing li {
@@ -202,10 +301,8 @@ ul#movie-listing li, ul#show-listing li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 4px solid #ff5757; */
   padding: 20px;
   object-fit: cover;
-  /* margin-top: 40px; */
   text-align: center;
   margin: 0px 10px;
   max-width: 250px;
@@ -344,9 +441,6 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  /* grid-template-columns: 600px 600px;
-  grid-template-rows: 100px 100px 300px 100px;
-  justify-self: center; */
 }
 
 a.movies, a.shows {

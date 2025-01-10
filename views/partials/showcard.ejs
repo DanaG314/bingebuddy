@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">
-                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px; object-fit: contain;">
+                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl">
                 </div>
                 
             </div>
-            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
+            <div class="col-lg-9" id="showcard-container">
                 <h1><%= show.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= show.genre %></h4>
@@ -20,7 +20,7 @@
                     <h4>Seasons: <%= show.seasons %></h4>
                     <h4>Episodes: <%= show.episodes %></h4>
                 </div>
-                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                <div id="showcard-description">
                     <p id="description"><strong>Description:</strong> <%= show.description %></p>
                 </div>
                 <% if (!show.note) { %>

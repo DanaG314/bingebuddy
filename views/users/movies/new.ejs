@@ -1,9 +1,7 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
-<div class="card mb-4" style="width: 100%;">
+<div class="card mb-4" id="movies-new">
     <div class="card-body">
         <form id="new-movie-reco" action="/movies/user-movies/new" method="POST">
-           
-            
             <div class="newMovieSection">
                 <div>
                     <label for="title" class="form-label">Movie Title:</label>
@@ -40,9 +38,6 @@
                     <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="form-control" />
                 </div>
             </div>    
-         
-            <input type="hidden" value="movie" name="contentType" />
-        
             <button type="submit">Save Movie</button>
         </form>
     </div>

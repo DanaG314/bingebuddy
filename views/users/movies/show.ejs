@@ -2,12 +2,12 @@
 <div class="card">
     <div class="card-header" id="movieview">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0" style="display: inline-flex;">
+            <ol id="movies-breadcrumb" class="breadcrumb mb-0">
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="/movies/user-movies">Back to Movies</a>
                 </li>
             </ol>
-            <div style="display: inline-flex; float: right;">
+            <div id="moviesedit-delete">
                 <a class="btn btn-primary" href="/movies/user-movies/<%= movie._id %>/edit">Edit</a>
                 <form action="/movies/user-movies/<%= movie._id %>?_method=DELETE" method="POST" id="main">
                     <button class="btn btn-danger" type="submit">DELETE</button>
@@ -18,19 +18,19 @@
     <div class="card-body" id="movieviewbody">
         <div class="row">
             <div class="col-lg-3" align="center">
-                <div style="margin: 0 auto;">
-                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px;">
+                <div id="moviesimage">
+                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl">
                 </div>
                 
             </div>
-            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
+            <div class="col-lg-9" id="movies-show">
                 <h1><%= movie.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= movie.genre %></h4>
                     <h4>Release Year: <%= movie.year %></h4>
                     <h4>Rating: <%= movie.rating %> </h4>
                 </div>
-                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                <div id="movies-show-description">
                     <p id="description"><strong>Description:</strong> <%= movie.description %></p>
                 </div>
                 <% if (!movie.note) { %>

@@ -6,18 +6,18 @@
         <div class="row">
             <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">
-                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl" style="width: 250px; padding: 10px; margin: 10px; object-fit: contain;">
+                    <img id="movie-image" src="<%= movie.imageUrl %>" alt="imageUrl">
                 </div>
                 
             </div>
-            <div class="col-lg-9" style="max-height: 400px; margin: 0 auto; text-align: center;">
+            <div class="col-lg-9" id="moviecard-container">
                 <h1><%= movie.title %></h1>
                 <div id="details-container">
                     <h4>Genre: <%= movie.genre %></h4>
                     <h4>Release Year: <%= movie.year %></h4>
                     <h4>Rating: <%= movie.rating %> </h4>
                 </div>
-                <div style="display: flex; justify-content: center; margin: 20px; text-align: left;">
+                <div id="moviecard-description">
                     <p id="description"><strong>Description:</strong> <%= movie.description %></p>
                 </div>
                 <% if (!movie.note) { %>

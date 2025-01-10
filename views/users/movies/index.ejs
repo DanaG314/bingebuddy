@@ -1,5 +1,5 @@
 <%- include('../../partials/navbar.ejs', { active: '' }) %>
-<div style="display: flex; justify-content: center; padding: 40px;">
+<div id="movies-index">
     <h1>My Movies</h1>
 </div>
 <div class="row">
@@ -24,6 +24,6 @@
         
     </div>
 </div>
-<a href="/movies/user-movies/new" style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">Add New Movie</a>
+<a href="/movies/user-movies/new" id="movies-index">Add New Movie</a>
 
 <%- include('../../partials/footer.ejs') %>
