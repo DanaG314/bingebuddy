@@ -16,9 +16,9 @@ BingeBuddy is a website to keep track of your watched movies and tv shows, add y
 
 |      Screenshot       |                      Description                      |
 | :-------------------: | :---------------------------------------------------: |
-| **HomePage feed**  | <img src="/images/Simon&apos;s Turn.png" width="300"> |
-| **User's Movies** |    <img src="/images/Player turn.png" width="300">    |
-|    **User's Tv Shows**     |    <img src="/images/Next Round.png" width="300">     |
+| **HomePage feed**  | <img src="/public/images/feed.png" width="300"> |
+| **User's Movies** |    <img src="/public/images/movies.png" width="300">    |
+|    **User's Tv Shows**     |    <img src="/public/images/tvshows.png" width="300">     |
 
 ## 💻 Technologies Used
 
@@ -38,7 +38,7 @@ Click to visit [BingeBuddy!][link]
 <details open>
 <summary> 🗺️ Navigating the Website</summary>
 
-1. Signing up/Signing in is necessary to enter the website, press the `SIGN UP` button. 
+1. Signing up/Signing in is necessary to enter the website, press the `SIGN UP` button or login. 
 2. After signing-up/signing-in the user will be taken to the homepage, displaying a feed of watched shows from other users that is posted ordered by their creation time.
 3. On the navbar there will be `My Movies` and `My Tv Shows` tabs which is where the user would store, create, update, and delete their watched movies and tv shows.
 
