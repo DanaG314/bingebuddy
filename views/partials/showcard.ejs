@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-3" align="center">
                 <div style="margin: 0 auto;">
-                    <img id="show-image" src="<%= show.imageUrl %>" alt="imageUrl">
+                    <img id="show-image" src="<%= show.imageUrl %>" alt="<%= show?.title %>">
                 </div>
                 
             </div>
@@ -25,9 +25,9 @@
                 </div>
                 <% if (!show.note) { %>
                    <p>No notes were added for this show.</p>
-                    <% } else { %>
-                        <p><strong>Notes:</strong> <%= show.note %></p>
-                    <% } %>
+                <% } else { %>
+                    <p><strong>Notes:</strong> <%= show.note %></p>
+                <% } %>
             </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ BingeBuddy is a website to keep track of your watched movies and tv shows, add y
 ## 💻 Technologies Used
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)
+![Bootstrap] (https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=bootstrap)
 ![CSS3](https://img.shields.io/badge/-CSS_Grid-05122A?style=flat&logo=css3)
 ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)  
 ![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
