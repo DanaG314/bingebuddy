@@ -1,5 +1,5 @@
 <div align="center" id="banner">
-    <img width="500" height="300" alt="BingeBuddy banner" src="/public/images/brand.png">
+    <img width="600" height="300" alt="BingeBuddy banner" src="/public/images/brand.png">
 </div>
 
 <div align="center" id="header">
@@ -47,9 +47,9 @@ Click to visit [BingeBuddy!][link]
 <details open>
 <summary>📋 Planning</summary>
 
-BingeBuddy Trello board --> [Trello][link]
+BingeBuddy Trello board --> [Trello][trello-link]
 
-[link]: https://trello.com/b/rd9NKTX7/project-2
+[trello-link]: https://trello.com/b/rd9NKTX7/project-2
 
 </details>
 
