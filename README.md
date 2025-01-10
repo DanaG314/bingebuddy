@@ -1,5 +1,5 @@
 <div align="center" id="banner">
-    <img width="500" height="300" alt="simon banner" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiRYn-iT4BlCSGK_GBQvBEHyOO4tx1ZEYSqA&s">
+    <img width="500" height="300" alt="BingeBuddy banner" src="/public/images/brand.png">
 </div>
 
 <div align="center" id="header">
@@ -47,7 +47,8 @@ Click to visit [BingeBuddy!][link]
 <details open>
 <summary>📋 Planning</summary>
 
-[BingeBuddy Trello Board][link]
+BingeBuddy Trello board --> [Trello][link]
+
 [link]: https://trello.com/b/rd9NKTX7/project-2
 
 </details>
